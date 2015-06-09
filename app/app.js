@@ -6,11 +6,7 @@
         $scope.expressions = ['>', '<', '=', '>=', '<=', '!='];
         $scope.constrains = [];
         $scope.add = function(){
-            $scope.constrains.push({
-                'type':'',
-                'exp':'',
-                'value':''
-            });
+            $scope.constrains.push({});
         }
         $scope.remove = function(index){
             $scope.constrains.splice(index, 1);
