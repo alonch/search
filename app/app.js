@@ -1,12 +1,23 @@
-'use strict';
+(function () {
+    var app = angular.module('core', []);
 
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+    app.controller("searchController", function($scope){
+        $scope.types = {'Name':'text', 'Last':'text', 'Date':'date', 'Price':'number'};
+        $scope.experetions = ['>', '<', '=', '>=', '<=', '!='];
+        $scope.constrains = [];
+        $scope.add = function(){
+            $scope.constrains.push({
+                'type':'',
+                'exp':'',
+                'value':''
+            });
+        }
+        $scope.remove = function(index){
+            $scope.constrains.splice(index, 1);
+        }
+        $scope.add();
+        $scope.show = function(){
+            console.log($scope.constrains);
+        }
+    });
+})();
