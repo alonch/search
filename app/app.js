@@ -3,15 +3,17 @@
 
     app.directive("search", function(){
        return {
-           templateUrl: "/template/search.tpl",
-           controller: "searchController"
-       }
+           restrict: "A",
+           templateUrl: "template/search.tpl",
+           controller: "searchController",
+           scope: {constrains: '=search'}
+           }
     });
 
-    app.controller("searchController", function($scope){
+    app.controller("searchController", ['$scope', function($scope){
         $scope.types = {'Name':'text', 'Last':'text', 'Date':'date', 'Price':'number'};
-        $scope.expressions = ['>', '<', '=', '>=', '<=', '!='];
         $scope.constrains = [{}];
+
         $scope.add = function(){
             $scope.constrains.push({});
         }
@@ -21,5 +23,12 @@
         $scope.show = function(){
             console.log($scope.constrains);
         }
-    });
+    }]);
+
+    app.controller("formController", ['$scope', function($scope){
+        $scope.show = function(){
+            console.log($scope.abc);
+        }
+    }]);
+
 })();
