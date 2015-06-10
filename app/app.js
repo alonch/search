@@ -1,6 +1,13 @@
 (function () {
     var app = angular.module('core', []);
 
+    app.directive("search", function(){
+       return {
+           templateUrl: "/template/search.tpl",
+           controller: "searchController"
+       }
+    });
+
     app.controller("searchController", function($scope){
         $scope.types = {'Name':'text', 'Last':'text', 'Date':'date', 'Price':'number'};
         $scope.expressions = ['>', '<', '=', '>=', '<=', '!='];
